@@ -3,6 +3,7 @@ import { Header } from "./Header";
 import { LapTable } from "./LapTable";
 import { TimeDisplay } from "./TimeDisplay";
 import { useStopwatch } from "./useStopwatch";
+import { LapLatest } from "./LapLatest";
 
 export default function App() {
   const { status, laps, elapsedTime, start, stop, reset, lap } = useStopwatch();
@@ -28,7 +29,7 @@ export default function App() {
   // ラップ用のフォーマット
   const formatTimeText = (ms: number) => {
     const { hours, minutes, seconds, milliseconds } = formatTime(ms);
-    return `${hours}:${minutes}:${seconds}.${milliseconds}`;
+    return `${hours}:${minutes}'${seconds}"${milliseconds}`;
   };
 
   // 表示用のフォーマット
@@ -58,18 +59,13 @@ export default function App() {
         <Header label={label} dot={dot} />
 
         <main className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-12">
-          <section className="lg:col-span-5">
+          <section className="lg:col-span-5 flex justify-center">
             <div className="rounded-2xl border border-white/10 bg-white/7 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_80px_-40px_rgba(0,0,0,0.8)]">
-              <div className="flex items-center justify-between">
-                <h2 className="text-sm font-medium text-slate-200">
-                  Elapsed Time
-                </h2>
-                <span className="text-sm text-slate-400">
-                  HH : MM : SS . ms
-                </span>
-              </div>
 
               <div className="mt-5 rounded-2xl bg-linear-to-b from-white/10 to-white/5 p-5 ring-1 ring-white/10">
+              <LapLatest
+              laps={laps} formatTimeText={formatTimeText}
+              />
                 <TimeDisplay
                   hours={hours}
                   minutes={minutes}
@@ -89,14 +85,6 @@ export default function App() {
           </section>
 
           <section className="lg:col-span-7">
-            <div className="rounded-2xl border border-white/10 bg-white/7 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_80px_-40px_rgba(0,0,0,0.8)]">
-              <div className="flex items-center justify-between px-6 py-4">
-                <h2 className="text-sm font-medium text-slate-200">Laps</h2>
-                <div className="text-xs text-slate-400">
-                  ラップはここに表示されます
-                </div>
-              </div>
-            </div>
 
             <div className="max-h-88 overflow-auto border-t border-white/10">
               <table className="w-full text-sm">
@@ -115,10 +103,6 @@ export default function App() {
           </section>
         </main>
 
-        <footer className="mt-8 text-xs text-slate-500">
-          ヒント：
-          「スタート」→「ラップ」で記録、「一時停止」→「再開」で続きから計測できます。
-        </footer>
       </div>
     </div>
   );
