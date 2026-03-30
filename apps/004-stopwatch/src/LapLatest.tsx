@@ -14,29 +14,29 @@ export const LapLatest = ({ laps, formatTimeText }: Props) => {
 
   return (
     <div>
-      <div className="grid grid-cols-[64px_40px_1fr] grid-rows-2 items-center gap-x-4 gap-y-3">
-        <div className="text-sm uppercase tracking-wide text-slate-300">
+      <div className="grid grid-cols-[44px_28px_1fr] grid-rows-2 items-center gap-x-2 gap-y-1">
+        <div className="text-[11px] uppercase tracking-wide text-slate-300">
           SPLIT
         </div>
 
-        <div className="row-span-2 self-center text-center text-2xl text-slate-200">
+        <div className="row-span-2 self-center text-center text-lg text-slate-200">
           {lapNumber}
         </div>
-        
-        <div className="text-right font-mono tabular-nums text-3xl text-slate-100">
+
+        <div className="text-right font-mono tabular-nums text-xl text-slate-100">
           {formatTimeText(totalTime)}
         </div>
 
-        <div className="text-sm uppercase tracking-wide text-slate-300">
+        <div className="text-[11px] uppercase tracking-wide text-slate-300">
           LAP
         </div>
-        
-        <div className="text-right font-mono tabular-nums text-3xl text-slate-100">
+
+        <div className="text-right font-mono tabular-nums text-xl text-slate-100">
           {formatTimeText(lapTime)}
         </div>
       </div>
 
-      <div className="mt-2 border-t border-white/20" />
+      <div className="mt-1 border-t border-white/20" />
     </div>
   );
 };
