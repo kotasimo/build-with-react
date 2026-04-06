@@ -1,24 +1,16 @@
 type Props = {
-  hours: string;
   minutes: string;
   seconds: string;
   milliseconds: string;
 };
 
 export const TimeDisplay = ({
-  hours,
   minutes,
   seconds,
   milliseconds,
 }: Props) => {
   return (
     <div className="flex w-full max-w-[460px] items-end justify-center font-mono tabular-nums">
-      <span className="inline-block w-[2ch] text-center text-5xl font-semibold tracking-tight sm:text-6xl">
-        {hours}
-      </span>
-      <span className="inline-block w-[1ch] pb-2 text-center text-2xl text-slate-300">
-        :
-      </span>
       <span className="inline-block w-[2ch] text-center text-5xl font-semibold tracking-tight sm:text-6xl">
         {minutes}
       </span>
